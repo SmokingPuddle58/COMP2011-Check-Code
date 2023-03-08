@@ -9,11 +9,5 @@ In macOS and Linux, run the following in your terminal:
 ```py
 python3 main.py
 ```
-In Windows, run the following in your terminal/command prompt:
-```py
-python main.py
-```
 
-P.S. I haven't checked it on Windows and macOS.
-
-P.S. Please do not use it on Windows yet!
+P.S. I haven't checked it on macOS.
