@@ -14,3 +14,4 @@ In Windows, run the following in your terminal/command prompt:
 python main.py
 ```
 
+P.S. I haven't checked it on Windows and macOS.
