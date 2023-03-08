@@ -1,4 +1,3 @@
-# import os.path
 import os
 from sys import platform
 import filecmp
