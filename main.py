@@ -1,12 +1,6 @@
 import os
-from sys import platform
 import filecmp
 import difflib
-
-if platform == "win32":  # True if system is Windows
-    system = 1
-else:
-    system = 0
 
 labName = input("Place it in the same folder with your lab code.\nAlso, put all the test cases, including input and output in the same folder \"testcase\"\nPlease specify the lab (e.g. lab3).\n")
 
@@ -17,6 +11,7 @@ try:
         raise Exception()
 except Exception:
     print("Compiler reports an error. Please check your code!")
+    exit(0)
 
 numTestcase = int(len(os.listdir('./testcase')) / 2)
 
@@ -29,12 +24,10 @@ keepFile = input("After testing, do you want to keep the output of your program?
 sumCorrect = 0
 
 for currentLabCase in range(numTestcase):
-    if system:
-        if os.system('powershell Get-Content testcase/input' + str(currentLabCase+1) + '.txt | ./' + labName + '> myOutput' + str(currentLabCase+1) + '.txt') != 0:
-            raise Exception()
-    else:
-        if os.system('./' + labName + '< testcase/input' + str(currentLabCase+1) + '.txt > myOutput' + str(currentLabCase+1) + ".txt") != 0:
-            raise Exception()
+
+    if os.system('./' + labName + '< testcase/input' + str(currentLabCase+1) + '.txt > myOutput' + str(currentLabCase+1) + ".txt") != 0:
+        raise Exception()
+        exit(0)
 
     print("--------------------")
     print("Testing case " + str(currentLabCase + 1))
@@ -45,7 +38,7 @@ for currentLabCase in range(numTestcase):
         for line in differ.compare(myOutput.readlines(), correctOutput.readlines()):
             print(line)
 
-        correct = filecmp.cmp(("./testcase/output" + str(currentLabCase + 1) + ".txt"), ("myOutput" + str(currentLabCase + 1) + ".txt"), shallow=False)
+        correct = filecmp.cmp("./testcase/output" + str(currentLabCase + 1) + ".txt", "myOutput" + str(currentLabCase + 1) + ".txt")
 
         if correct:
             print("Test case passed!")
