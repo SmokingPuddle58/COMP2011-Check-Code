@@ -30,7 +30,7 @@ sumCorrect = 0
 
 for currentLabCase in range(numTestcase):
     if system:
-        if os.system('Get-Content testcase/input' + str(currentLabCase+1) + '.txt | ./' + labName + '> myOutput' + str(currentLabCase+1) + '.txt') != 0:
+        if os.system('powershell Get-Content testcase/input' + str(currentLabCase+1) + '.txt | ./' + labName + '> myOutput' + str(currentLabCase+1) + '.txt') != 0:
             raise Exception()
     else:
         if os.system('./' + labName + '< testcase/input' + str(currentLabCase+1) + '.txt > myOutput' + str(currentLabCase+1) + ".txt") != 0:
