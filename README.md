@@ -15,3 +15,5 @@ python main.py
 ```
 
 P.S. I haven't checked it on Windows and macOS.
+
+P.S. Please do not use it on Windows yet!
